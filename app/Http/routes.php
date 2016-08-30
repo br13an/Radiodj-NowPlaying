@@ -14,9 +14,6 @@
 $app->get('/', ['uses' => 'SiteController@index']);
 
 $app->group(['prefix' => 'api/v1'], function () use ($app) {
-  $app->get('foo', function () {
-      return 'Hello World';
-  });
   $app->get('upcoming', ['uses' => 'App\Http\Controllers\nowPlayingController@upcoming' ]);
   $app->get('upcoming_tracks', ['uses' => 'App\Http\Controllers\nowPlayingController@upcoming_tracks' ]);
   $app->get('nowplaying', ['uses' => 'App\Http\Controllers\nowPlayingController@nowPlaying' ]);
