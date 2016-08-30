@@ -12,10 +12,11 @@
   $song = new \app\Helpers\SongHelper;
   ?>
     <div class="jumbotron">
-      <h1> NP:
-      @foreach($np as $p)
-        {{ $p->artist }} - {{ $p->title }}
-      @endforeach
+      <h3> NOW PLAYING: </h3>
+      <h1>
+        @foreach($np as $p)
+          {{ $p->artist }} - {{ $p->title }}
+        @endforeach
       </h1>
     </div>
     <h3>History:</h3>
