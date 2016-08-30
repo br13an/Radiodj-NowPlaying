@@ -42,12 +42,11 @@ class songController extends Controller
     public function search($query)
     {
       $input = str_replace('%20', ' ', $query);
-      //$input = $query;
       $songs = DB::table('songs')
                     ->where('artist', 'like', '%'. $input .'%')
                     ->orWhere('title', 'like', '%'. $input .'%')
                     ->get();
-                  
+
       return $songs;
     }
 
