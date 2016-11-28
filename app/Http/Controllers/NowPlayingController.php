@@ -46,7 +46,7 @@ class nowPlayingController extends Controller
     public function upcoming_tracks(){
       $array = array();
       $song = new \app\Helpers\SongHelper;
-      foreach(nowPlayingController::upcoming() as $upcoming){
+      foreach(\app\Http\Controllers\nowPlayingController::upcoming() as $upcoming){
         foreach($song->getSongByID($upcoming->songID)->get() as $track){
           $so = new \App\Song;
           $so->ID = $track->ID;
@@ -82,8 +82,8 @@ class nowPlayingController extends Controller
             'requested'     =>    DB::raw('NOW()')
           ]
         );
-        return response('[ { "message" : "success" } ]', 200)
-              ->header('Content-Type', 'json');
+        $trackName = $songHelper->getSongByID($songID);
+        return response()->json($trackName);
       }
       catch(\Exception $e)
       {
