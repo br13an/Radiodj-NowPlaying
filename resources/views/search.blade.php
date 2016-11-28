@@ -24,6 +24,7 @@
         <th>Duration</th>
         <th>Artist</th>
         <th>Title</th>
+        <th>Album</th>
       </tr>
       <tbody>
         @foreach($songs as $u)
@@ -43,6 +44,9 @@
             </td>
             <td>
               {{ $u->title }}
+            </td>
+            <td>
+              {{ $u->album }}
             </td>
           </tr>
         @endforeach
