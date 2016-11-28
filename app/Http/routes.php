@@ -16,12 +16,13 @@ use Illuminate\Http\RedirectResponse;
 $app->get('/', ['uses' => 'SiteController@index']);
 
 $app->group(['prefix' => 'api/v1'], function () use ($app) {
+  $app->post('request/{id}', ['uses' => 'App\Http\Controllers\nowPlayingController@request' ]);
   $app->get('upcoming', ['uses' => 'App\Http\Controllers\nowPlayingController@upcoming' ]);
   $app->get('upcoming_tracks', ['uses' => 'App\Http\Controllers\nowPlayingController@upcoming_tracks' ]);
   $app->get('nowplaying', ['uses' => 'App\Http\Controllers\nowPlayingController@nowPlaying' ]);
   $app->get('history', ['uses' => 'App\Http\Controllers\nowPlayingController@history' ]);
   $app->get('songs/search/{query}', ['uses' => 'App\Http\Controllers\songController@search']);
   $app->get('songs/count', ['uses' => 'App\Http\Controllers\songController@count_tracks']);
-  $app->get('songs/skip/{id}', ['uses' => 'App\Http\Controllers\songController@paginate']);
+  $app->get('songs/page/{id}', ['uses' => 'App\Http\Controllers\songController@paginate']);
   $app->get('songs', ['uses' => 'App\Http\Controllers\songController@index']);
 });
