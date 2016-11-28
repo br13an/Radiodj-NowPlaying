@@ -29,7 +29,7 @@
     <ul>
       @foreach($upcoming as $u)
         @foreach($song->getSongByID($u->songID)->get() as $track)
-          <li>{{ $u->songID }} [{{ $helper->convertTime($track->duration) }}] {{ $track->artist }} - {{ $track->title }}</li>
+          <li>[{{ $helper->convertTime($track->duration) }}] {{ $track->artist }} - {{ $track->title }}</li>
         @endforeach
       @endforeach
     </ul>

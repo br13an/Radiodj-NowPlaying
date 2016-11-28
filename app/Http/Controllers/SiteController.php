@@ -28,4 +28,11 @@ class SiteController extends Controller
       $upcoming = json_decode( $res3->getBody() );
       return view('index', ['np' => $np, 'history' => $history, 'upcoming' => $upcoming]);
     }
+
+    public function search($query){
+      $Now = new \GuzzleHttp\Client();
+      $res = $Now->request('GET', env('BASE_URL').'/songs/search/'.$query);
+      $songs = json_decode( $res->getBody() );
+      return view('search', ['songs' => $songs, 'query' => $query]);
+    }
 }
