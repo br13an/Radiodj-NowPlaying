@@ -12,7 +12,7 @@
   $song = new \app\Helpers\SongHelper;
   ?>
     <div class="jumbotron">
-      <h3> <a href="/public/listen.m3u">NOW PLAYING:</a> </h3>
+      <h3> <a href="/listen.m3u">NOW PLAYING:</a> </h3>
       <h1>
         @foreach($np as $p)
           {{ $p->artist }} - {{ $p->title }}
