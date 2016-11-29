@@ -18,13 +18,15 @@ class NowPlayingController extends Controller
         //
     }
 
-    public function nowPlaying(){
+    public function nowPlaying()
+    {
       $query = DB::table('history')->where('song_type', 0)
         ->orderBy('date_played', 'DESC')->limit(1)->select("*")->get();
       return $query;
     }
 
-    public function upcoming(){
+    public function upcoming()
+    {
       $nextLimit		= 3;				// How many upcoming tracks to display?
       $shufleUpcoming = True;				// Don't show the correct order of upcoming tracks
       $resLimit		= 5;				// How many history tracks to display?
@@ -43,7 +45,8 @@ class NowPlayingController extends Controller
 
     }
 
-    public function upcoming_tracks(){
+    public function upcoming_tracks()
+    {
       $array = array();
       $song = new \app\Helpers\SongHelper;
       foreach(\app\Http\Controllers\NowPlayingController::upcoming() as $upcoming){
@@ -58,6 +61,26 @@ class NowPlayingController extends Controller
       }
 
       return response()->json($array);
+    }
+
+    public function remove_upcoming($id)
+    {
+      if(strpos($id, ',') !== false)
+      {
+        $array = explode(',', $id);
+        foreach($array as $keyval)
+        {
+          // Start removing upcoming here
+          $delete = DB::table('queuelist')->where('SongID', $keyval)->delete();
+        }
+        return response('[ { "message" : "deleted multiple records" } ]', 200)
+              ->header('Content-Type', 'json');
+      }
+      else{
+        $delete = DB::table('queuelist')->where('SongID', $id)->delete();
+        return response('[ { "message" : "deleted record" } ]', 200)
+              ->header('Content-Type', 'json');
+      }
     }
 
     public function request($id)
@@ -93,7 +116,8 @@ class NowPlayingController extends Controller
 
     }
 
-    public function history(){
+    public function history()
+    {
       $query = DB::table('history')->where('song_type', 0)
         ->orderBy('date_played', 'DESC')->limit(6)->skip(1)->select("*")->get();
       return $query;

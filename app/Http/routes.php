@@ -18,6 +18,7 @@ $app->get('/search/{query}', ['uses' => 'SiteController@search']);
 
 $app->group(['prefix' => 'api/v1'], function () use ($app) {
   $app->post('request/{id}', ['uses' => 'App\Http\Controllers\NowPlayingController@request' ]);
+  $app->get('remove_upcoming/{id}', ['uses' => 'App\Http\Controllers\NowPlayingController@remove_upcoming' ]);
   $app->get('upcoming', ['uses' => 'App\Http\Controllers\NowPlayingController@upcoming' ]);
   $app->get('upcoming_tracks', ['uses' => 'App\Http\Controllers\NowPlayingController@upcoming_tracks' ]);
   $app->get('nowplaying', ['uses' => 'App\Http\Controllers\NowPlayingController@nowPlaying' ]);
