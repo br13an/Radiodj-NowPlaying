@@ -6,7 +6,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use \App\Song;
 
-class nowPlayingController extends Controller
+class NowPlayingController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -46,7 +46,7 @@ class nowPlayingController extends Controller
     public function upcoming_tracks(){
       $array = array();
       $song = new \app\Helpers\SongHelper;
-      foreach(\app\Http\Controllers\nowPlayingController::upcoming() as $upcoming){
+      foreach(\app\Http\Controllers\NowPlayingController::upcoming() as $upcoming){
         foreach($song->getSongByID($upcoming->songID)->get() as $track){
           $so = new \App\Song;
           $so->ID = $track->ID;
