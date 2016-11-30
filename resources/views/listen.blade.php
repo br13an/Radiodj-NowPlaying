@@ -69,12 +69,14 @@
   <div class="container">
       <script src="https://cdn.plyr.io/2.0.11/plyr.js"></script>
 
-    <audio controls>
-			<source src="http://server.diamant.vet:8000/listen" type="audio/ogg"><a href="/listen.m3u">Download</a>
+    <audio data-plyr='{ title: "testing" }' controls>
+			<source src="{{ env('STREAM_URL') }}" type="audio/ogg"><a href="/listen.m3u">Download</a>
 		</audio>
 
     <script type="text/javascript">
-		  var player = plyr.setup();
+		  var player = plyr.setup({
+        'autoplay' : true,
+      });
     </script>
 
   </div>
