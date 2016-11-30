@@ -6,6 +6,11 @@
   -->
   <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.css" >
   <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css" >
+  <link rel="stylesheet" href="/css/audio-stream-player.css">
+  <link rel="stylesheet" href="//cdn.plyr.io/1.8.2/plyr.css">
+
+
+
   <style>
     .table tbody>tr>td.vert-align{
       vertical-align: middle;
@@ -39,9 +44,6 @@
             @endforeach
           @endif
           </a></li>
-          <li>
-            <a href="/listen">Webplayer</a>
-          </li>
         </ul>
         <form class="navbar-form navbar-right" method="POST" action="/search">
           <div class="form-group">
@@ -54,46 +56,31 @@
   </nav>
     <div class="jumbotron">
       <div class="container">
-        <h3 class="text-success"> SEARCHING FOR:  </h3>
+        <h3 class="text-success"> NOW PLAYING  </h3>
         <h1>
-          {{ $query }}
+          @if(!empty($np))
+            @foreach($np as $p)
+              {{ $p->artist }} - {{ $p->title }}
+            @endforeach
+          @endif
         </h1>
       </div>
     </div>
   <div class="container">
-    <h3>tracks</h3>
-    <table class="table table-striped">
-      <tr>
-        <th>ID</th>
-        <th>Duration</th>
-        <th>Artist</th>
-        <th>Title</th>
-        <th>Album</th>
-      </tr>
-      <tbody>
-        @foreach($songs as $u)
-          <tr>
-            <form id="form" action="/api/v1/request/{{ $u->ID }}" method="POST">
-              <td class="vert-align">
-                    <button class="btn btn-sm btn-success" type="submit" >Request: {{ $u->ID }}</button>
-              </td>
-            </form>
-            <td class="vert-align">
-              {{ $helper->convertTime($u->duration) }}
-            </td>
-            <td class="vert-align">
-              {{ $u->artist }}
-            </td>
-            <td class="vert-align">
-              {{ $u->title }}
-            </td>
-            <td class="vert-align">
-              {{ $u->album }}
-            </td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
+      <script src="https://cdn.plyr.io/2.0.11/plyr.js"></script>
+
+    <audio controls>
+			<source src="http://server.diamant.vet:8000/listen" type="audio/ogg"><a href="/listen.m3u">Download</a>
+		</audio>
+
+    <script type="text/javascript">
+		  var player = plyr.setup();
+    </script>
+
   </div>
 </body>
+
+  <!-- Rangetouch to fix <input type="range"> on touch devices (see https://rangetouch.com) -->
+  <script src="https://cdn.rangetouch.com/0.0.9/rangetouch.js" async></script>
+
 </html>

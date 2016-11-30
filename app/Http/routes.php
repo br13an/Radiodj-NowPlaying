@@ -16,6 +16,7 @@ use Illuminate\Http\RedirectResponse;
 $app->get('/', ['uses' => 'SiteController@index']);
 $app->post('/search', ['uses' => 'SiteController@search_frontend']);
 $app->get('/search', ['uses' => 'SiteController@search']);
+$app->get('/listen', ['uses' => 'SiteController@listen']);
 
 
 $app->group(['prefix' => 'api/v1'], function () use ($app) {

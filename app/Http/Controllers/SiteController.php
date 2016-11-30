@@ -48,4 +48,11 @@ class SiteController extends Controller
       $songs = json_decode( $res->getBody() );
       return view('search', ['np' => $np, 'songs' => $songs, 'query' => $query]);
     }
+
+    public function listen(){
+      $Now = new \GuzzleHttp\Client();
+      $nowplaying = $Now->request('GET', env('BASE_URL').'/nowplaying');
+      $np = json_decode( $nowplaying->getBody() );
+      return view('listen', ['np' => $np]);
+    }
 }

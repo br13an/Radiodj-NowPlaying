@@ -56,6 +56,11 @@
           <a class="navbar-brand" href="#">BriFM</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/listen">Webplayer</a>
+            </li>
+          </ul>
           <form class="navbar-form navbar-right" method="POST" action="/search">
             <div class="form-group">
               <input type="text" name="song" placeholder="Song" class="form-control">
@@ -76,7 +81,7 @@
           </h1>
         </div>
       </div>
-      <a class="bar" href="/listen.m3u">TUNE IN</a>
+      <a class="bar" href="/listen">TUNE IN</a>
   <div class="container">
       <h3>Upcoming</h3>
       <table class="table table-striped col-lg-12">
