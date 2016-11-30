@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
@@ -31,8 +32,20 @@ class SiteController extends Controller
 
     public function search($query){
       $Now = new \GuzzleHttp\Client();
+      $nowplaying = $Now->request('GET', env('BASE_URL').'/nowplaying');
+      $np = json_decode( $nowplaying->getBody() );
       $res = $Now->request('GET', env('BASE_URL').'/songs/search/'.$query);
       $songs = json_decode( $res->getBody() );
-      return view('search', ['songs' => $songs, 'query' => $query]);
+      return view('search', ['np' => $np, 'songs' => $songs, 'query' => $query]);
+    }
+
+    public function search_frontend(Request $request){
+      $query = $request->song;
+      $Now = new \GuzzleHttp\Client();
+      $nowplaying = $Now->request('GET', env('BASE_URL').'/nowplaying');
+      $np = json_decode( $nowplaying->getBody() );
+      $res = $Now->request('GET', env('BASE_URL').'/songs/search/'.$query);
+      $songs = json_decode( $res->getBody() );
+      return view('search', ['np' => $np, 'songs' => $songs, 'query' => $query]);
     }
 }

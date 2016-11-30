@@ -18,6 +18,7 @@
       -moz-border-radius: 0px;
       -webkit-border-radius: 0px;
       margin-bottom: 0px;
+      margin-top:2em;
     }
     .bar{
       display: block;
@@ -32,6 +33,7 @@
       color: inherit;
       text-decoration: none;
     }
+
   </style>
 </head>
 
@@ -41,6 +43,29 @@
     $helper = new \app\Helpers\DateTimeHelper;
     $song = new \app\Helpers\SongHelper;
     ?>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">BriFM</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" method="POST" action="/search">
+            <div class="form-group">
+              <input type="text" name="song" placeholder="Song" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Search</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
       <div class="jumbotron">
         <div class="container">
           <h3 class="text-success">NOW PLAYING: </h3>
