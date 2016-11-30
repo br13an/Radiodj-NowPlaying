@@ -70,7 +70,7 @@
       <script src="https://cdn.plyr.io/2.0.11/plyr.js"></script>
 
     <audio data-plyr='{ title: "testing" }' controls>
-			<source src="{{ env('STREAM_URL') }}" type="audio/ogg"><a href="/listen.m3u">Download</a>
+
       <source src="{{ env('STREAM_URL') }}" type="audio/aac"><a href="/listen.m3u">Download</a>
 		</audio>
 
