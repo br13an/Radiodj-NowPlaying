@@ -120,7 +120,7 @@ class NowPlayingController extends Controller
     public function history()
     {
       $query = DB::table('history')->where('song_type', 0)
-        ->orderBy('date_played', 'DESC')->limit(6)->skip(1)->select("*")->get();
+        ->orderBy('date_played', 'DESC')->limit(20)->skip(1)->select("*")->get();
       return $query;
     }
 }

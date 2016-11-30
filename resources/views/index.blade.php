@@ -78,33 +78,6 @@
       </div>
       <a class="bar" href="/listen.m3u">TUNE IN</a>
   <div class="container">
-      <h3>History:</h3>
-      <table class="table table-striped col-lg-12">
-        <tr>
-          <th class="col-lg-1">#</th>
-          <th class="col-lg-4">Artist</th>
-          <th class="col-lg-6">Title</th>
-          <th class="col-lg-1">Duration</th>
-        </tr>
-      <tbody>
-      @foreach($history as $h)
-        <tr>
-          <td>
-            {{ $h->ID }}
-          </td>
-          <td>
-            {{ $h->artist }}
-          </td>
-          <td>
-            {{ $h->title }}
-          </td>
-          <td>
-            {{ $helper->convertTime($h->duration) }}
-          </td>
-        </tr>
-      @endforeach
-      </tbody>
-    </table>
       <h3>Upcoming</h3>
       <table class="table table-striped col-lg-12">
         <tr>
@@ -134,6 +107,34 @@
         @endforeach
       </tbody>
     </table>
+
+    <h3>History:</h3>
+    <table class="table table-striped col-lg-12">
+      <tr>
+        <th class="col-lg-1">#</th>
+        <th class="col-lg-4">Artist</th>
+        <th class="col-lg-6">Title</th>
+        <th class="col-lg-1">Duration</th>
+      </tr>
+    <tbody>
+    @foreach($history as $h)
+      <tr>
+        <td>
+          {{ $h->ID }}
+        </td>
+        <td>
+          {{ $h->artist }}
+        </td>
+        <td>
+          {{ $h->title }}
+        </td>
+        <td>
+          {{ $helper->convertTime($h->duration) }}
+        </td>
+      </tr>
+    @endforeach
+    </tbody>
+  </table>
   </div>
 </body>
 </html>

@@ -45,6 +45,7 @@ class songController extends Controller
       $songs = DB::table('songs')
                     ->where('artist', 'like', '%'. $input .'%')
                     ->orWhere('title', 'like', '%'. $input .'%')
+                    ->orWhere('album', 'like', '%'. $input .'%')
                     ->get();
 
       return $songs;
