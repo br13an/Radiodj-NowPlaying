@@ -106,7 +106,8 @@ class NowPlayingController extends Controller
           ]
         );
         $trackName = $songHelper->getSongByID($songID);
-        return response()->json($trackName);
+        return response('[ { "message" : "success" } ]', 200)
+              ->header('Content-Type', 'json');
       }
       catch(\Exception $e)
       {

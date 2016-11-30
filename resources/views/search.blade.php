@@ -33,9 +33,11 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><a href="/">
+          @if(!empty($np))
             @foreach($np as $p)
               {{ $p->artist }} - {{ $p->title }}
             @endforeach
+          @endif
           </a></li>
         </ul>
         <form class="navbar-form navbar-right" method="POST" action="/search">
