@@ -71,7 +71,7 @@
 
     <audio data-plyr='{ title: "testing" }' controls>
 
-      <source src="{{ env('STREAM_URL') }}" type="audio/aac"><a href="/listen.m3u">Download</a>
+      <source src="{{ env('STREAM_URL') }}" type="audio/mp3"><a href="/listen.m3u">Download</a>
 		</audio>
 
     <script type="text/javascript">
